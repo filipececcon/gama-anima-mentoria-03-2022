@@ -1,13 +1,20 @@
 ﻿using System;
+using Anima.Banco.Domain.Shared.Entities;
+
 namespace Anima.Banco.Domain.Core.Entities
 {
-    public class Customer
+    public class Customer : Entity
     {
-        public Guid Id { get; set; }
+        private Customer() { }
+
+        public Customer(string name, string email) : base(Guid.NewGuid())
+        {
+            Name = name;
+            Email = email;
+        }
+
         public string Name { get; set; }
         public string Email { get; set; }
-        public DateTime UpdatedAt { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public bool IsActive { get; set; }
+        
     }
 }

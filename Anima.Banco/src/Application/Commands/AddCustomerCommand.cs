@@ -10,17 +10,13 @@ namespace Anima.Banco.Application.Commands
     // os comandos são instruçoes que alteram o estado do servidor
     public class AddCustomerCommand : Command<AddCustomerRequest, AddCustomerResponse>
     {
-        private static List<Customer> Customers { get; set; }
+        public static List<Customer> Customers = new List<Customer>();
 
         //todo metodo handle tem que caracterizar um transação
         public override AddCustomerResponse Handle(AddCustomerRequest request)
         {
-            var customer = new Customer
-            {
-                Name = request.Name,
-                Email = request.Email
-            };
-
+            var customer = new Customer(request.Name, request.Email);
+            
             Customers.Add(customer);
 
             return new AddCustomerResponse

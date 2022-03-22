@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>Anima.Banco.Domain.Core</RootNamespace>
-    <AssemblyName>Anima.Banco.Domain.Core</AssemblyName>
+    <RootNamespace>Anima.Banco.Domain.Shared</RootNamespace>
+    <AssemblyName>Anima.Banco.Domain.Shared</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,8 +11,5 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Domain.Shared\Domain.Shared.csproj" />
   </ItemGroup>
 </Project>

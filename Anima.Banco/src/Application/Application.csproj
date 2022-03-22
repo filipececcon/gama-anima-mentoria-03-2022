@@ -14,12 +14,14 @@
     <None Remove="Common\" />
     <None Remove="Request\" />
     <None Remove="Responses\" />
+    <None Remove="Queries\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Commands\" />
     <Folder Include="Common\" />
     <Folder Include="Requests\" />
     <Folder Include="Responses\" />
+    <Folder Include="Queries\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain.Core\Domain.Core.csproj" />

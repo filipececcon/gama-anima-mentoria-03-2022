@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Anima.Banco.Application.Commands;
+using Anima.Banco.Application.Queries;
+using Anima.Banco.Application.Requests;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,13 +14,27 @@ namespace Anima.Banco.Service.API.Controllers
     [Route("api/[controller]")]
     public class CustomerController : ControllerBase
     {
-        //irão ficar os nossos endpoints
+        
         [HttpPost]
-        public Object Add(object request)
+        public IActionResult Add(AddCustomerRequest request)
         {
-            return new object();
+            var cmd = new AddCustomerCommand();
+
+            var response = cmd.Handle(request);
+
+            return Created("", response);
         }
 
+        [HttpGet("{id}")]        
+        public IActionResult GetById([FromRoute] Guid id)
+        {
+            var query = new GetCustomerByIdQuery();
 
+            var request = new GetCustomerByIdRequest() { Id = id };
+
+            var response = query.Handle(request);
+
+            return Ok(response);
+        }
     }
 }
