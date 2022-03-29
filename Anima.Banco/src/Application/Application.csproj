@@ -15,6 +15,7 @@
     <None Remove="Request\" />
     <None Remove="Responses\" />
     <None Remove="Queries\" />
+    <None Remove="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Commands\" />
@@ -22,6 +23,7 @@
     <Folder Include="Requests\" />
     <Folder Include="Responses\" />
     <Folder Include="Queries\" />
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain.Core\Domain.Core.csproj" />

@@ -28,7 +28,7 @@ namespace Anima.Banco.Infrastructure.Data.Persistence.Repositories
             return _context.Set<TEntity>();
         }
 
-        public void RemoveAsync<TEntity>(Guid id) where TEntity : Entity
+        public void Remove<TEntity>(Guid id) where TEntity : Entity
         {
             var table = _context.Set<TEntity>();
 

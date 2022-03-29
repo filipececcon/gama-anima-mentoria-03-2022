@@ -17,6 +17,7 @@ namespace Anima.Banco.Infrastructure.Data.Persistence
             services.AddDbContext<AnimaContext>(options => options.UseSqlServer(connectionString));
 
             services.AddScoped<IWriteRepository, WriteRepository>();
+            services.AddScoped<IReadRepository, ReadRepository>();
 
             return services;
         }

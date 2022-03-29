@@ -9,12 +9,7 @@ namespace Anima.Banco.Infrastructure.Data.Persistence.Contexts
     {
         public DbSet<Customer> Customers { get; set; }
 
-        public AnimaContext()
-        {
-
-        }
-
-        public AnimaContext(DbContextOptionsBuilder builder) : base(builder.Options)
+        public AnimaContext(DbContextOptions options) : base(options)
         {
             Database.EnsureCreated();
         }
