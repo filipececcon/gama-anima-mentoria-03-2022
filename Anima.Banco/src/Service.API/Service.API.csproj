@@ -6,7 +6,8 @@
     <AssemblyName>Anima.Banco.Service.API</AssemblyName>
   </PropertyGroup>
 
-  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Service.API' " />
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Homolog' " />
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Local' " />
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />

@@ -13,6 +13,8 @@ namespace Anima.Banco.Domain.Shared.Interfaces
 
         IQueryable<TEntity> AsQueryable<TEntity>(params Expression<Func<TEntity, object>>[] includes) where TEntity : Entity;
 
+        IQueryable<TEntity> AsQueryable<TEntity>(params string[] includes) where TEntity : Entity;
+
         void Commit();
     }
 }

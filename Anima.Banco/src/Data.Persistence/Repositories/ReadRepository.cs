@@ -21,5 +21,17 @@ namespace Anima.Banco.Infrastructure.Data.Persistence.Repositories
         {
             return _context.Set<TEntity>().AsNoTracking();                
         }
+
+        public IQueryable<TEntity> AsQueryable<TEntity>(params string[] includes) where TEntity : Entity
+        {
+            var db = _context.Set<TEntity>().AsNoTracking().AsQueryable();
+
+            foreach (var i in includes)
+            {
+                db = db.Include(i);
+            }
+
+            return db;
+        }
     }
 }
