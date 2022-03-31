@@ -18,14 +18,17 @@ namespace Anima.Banco.Infrastructure.Data.Persistence.Repositories
 
         public void Add<TEntity>(TEntity entity) where TEntity : Entity
         {
-            _context.Set<TEntity>().Add(entity);
-
-            _context.SaveChanges();
+            _context.Set<TEntity>().Add(entity);            
         }
 
         public IQueryable<TEntity> AsQueryable<TEntity>(params Expression<Func<TEntity, object>>[] includes) where TEntity : Entity
         {
             return _context.Set<TEntity>();
+        }
+
+        public void Commit()
+        {
+            _context.SaveChanges();
         }
 
         public void Remove<TEntity>(Guid id) where TEntity : Entity
@@ -35,8 +38,6 @@ namespace Anima.Banco.Infrastructure.Data.Persistence.Repositories
             var entity = table.Find(id);
 
             table.Remove(entity);
-
-            _context.SaveChanges();
         }
     }
 }

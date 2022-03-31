@@ -14,7 +14,15 @@ namespace Anima.Banco.Application.Common
             _repository = repository;
         }
 
+        protected abstract TResponse Changes(TRequest request);
 
-        public abstract TResponse Handle(TRequest request);        
+        public virtual TResponse Handle(TRequest request)
+        {
+            var response = Changes(request);
+
+            _repository.Commit();
+
+            return response;
+        }        
     }
 }

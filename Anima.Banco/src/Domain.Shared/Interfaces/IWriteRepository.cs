@@ -12,5 +12,7 @@ namespace Anima.Banco.Domain.Shared.Interfaces
         void Remove<TEntity>(Guid id) where TEntity : Entity;
 
         IQueryable<TEntity> AsQueryable<TEntity>(params Expression<Func<TEntity, object>>[] includes) where TEntity : Entity;
+
+        void Commit();
     }
 }

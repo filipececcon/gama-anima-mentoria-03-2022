@@ -4,6 +4,7 @@ using Anima.Banco.Application.Commands;
 using Anima.Banco.Application.Common;
 using Anima.Banco.Application.Requests;
 using Anima.Banco.Domain.Core.Entities;
+using Anima.Banco.Domain.Core.Exceptions;
 using Anima.Banco.Domain.Shared.Interfaces;
 
 namespace Anima.Banco.Application.Queries
@@ -18,7 +19,17 @@ namespace Anima.Banco.Application.Queries
         {
             var customer = _repository.AsQueryable<Customer>().SingleOrDefault(x => x.Id == request.Id);
 
-            if (customer == null) return null;
+            //tratando erros com exception
+            //if (customer == null) throw new CustomerException("Cliente não encontrado");
+
+            var response = new GetCustomerByIdResponse();
+
+            if (customer == null)
+            {
+                response.AddError("Cliente não encontrado");
+                return response;
+            }
+
 
             return new GetCustomerByIdResponse
             {
