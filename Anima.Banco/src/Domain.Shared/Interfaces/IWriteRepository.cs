@@ -7,13 +7,11 @@ namespace Anima.Banco.Domain.Shared.Interfaces
 {
     public interface IWriteRepository
     {
+        IQueryable<TEntity> AsQueryable<TEntity>() where TEntity : Entity;
+
         void Add<TEntity>(TEntity entity) where TEntity : Entity;
 
         void Remove<TEntity>(Guid id) where TEntity : Entity;
-
-        IQueryable<TEntity> AsQueryable<TEntity>(params Expression<Func<TEntity, object>>[] includes) where TEntity : Entity;
-
-        IQueryable<TEntity> AsQueryable<TEntity>(params string[] includes) where TEntity : Entity;
 
         void Commit();
     }

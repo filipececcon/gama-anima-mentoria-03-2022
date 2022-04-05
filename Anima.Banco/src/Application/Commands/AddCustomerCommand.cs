@@ -1,4 +1,5 @@
-﻿using Anima.Banco.Application.Common;
+﻿using System.Linq;
+using Anima.Banco.Application.Common;
 using Anima.Banco.Application.Requests;
 using Anima.Banco.Application.Responses;
 using Anima.Banco.Domain.Core.Entities;
@@ -16,15 +17,24 @@ namespace Anima.Banco.Application.Commands
         //todo metodo handle tem que caracterizar um transação
         protected override AddCustomerResponse Changes(AddCustomerRequest request)
         {
-            var customer = new Customer(request.Name, request.Email);
+            var result = _repository.AsQueryable<Customer>().Where(x => x.Email == request.Email);
 
-            _repository.Add(customer);
+            var response = new AddCustomerResponse();
 
-            return new AddCustomerResponse
+            if (result.Any()) response.AddError("Email ja existe");
+
+            if (response.IsSuccess)
             {
-                Id = customer.Id,
-                CreatedAt = customer.CreatedAt
-            };
+
+                var customer = new Customer(request.Name, request.Email);
+
+                _repository.Add(customer);
+
+                response.Id = customer.Id;
+                response.CreatedAt = customer.CreatedAt;
+            }
+
+            return response;
         }
     }
 }

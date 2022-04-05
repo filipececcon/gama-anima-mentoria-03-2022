@@ -1,7 +1,7 @@
 ﻿using System;
 using Anima.Banco.Application.Common;
 
-namespace Anima.Banco.Application.Requests
+namespace Anima.Banco.Application.Responses
 {
     public class GetCustomerByIdResponse : Response
     {

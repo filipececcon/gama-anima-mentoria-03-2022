@@ -54,6 +54,17 @@ namespace Anima.Banco.Service.API.Controllers
         //    }
         //}
 
+        [HttpGet()] // http://meusistema.com.br/api/customer?name='filipe'&email='@gmail'
+        public IActionResult Get([FromQuery] GetCustomerRequest request)
+        {
+            var query = new GetCustomerQuery(_rrepository);
+
+            var response = query.Handle(request);
+
+            return Ok(response);
+        }
+
+
         [HttpGet("{id}")]
         public IActionResult GetById([FromRoute] Guid id)
         {

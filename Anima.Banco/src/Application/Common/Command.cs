@@ -20,7 +20,7 @@ namespace Anima.Banco.Application.Common
         {
             var response = Changes(request);
 
-            _repository.Commit();
+            if(response.IsSuccess) _repository.Commit();
 
             return response;
         }        

@@ -3,6 +3,7 @@ using System.Linq;
 using Anima.Banco.Application.Commands;
 using Anima.Banco.Application.Common;
 using Anima.Banco.Application.Requests;
+using Anima.Banco.Application.Responses;
 using Anima.Banco.Domain.Core.Entities;
 using Anima.Banco.Domain.Core.Exceptions;
 using Anima.Banco.Domain.Shared.Interfaces;

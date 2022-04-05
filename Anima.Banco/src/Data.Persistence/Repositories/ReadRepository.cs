@@ -17,21 +17,9 @@ namespace Anima.Banco.Infrastructure.Data.Persistence.Repositories
             _context = context;
         }
 
-        public IQueryable<TEntity> AsQueryable<TEntity>(params Expression<Func<TEntity, object>>[] includes) where TEntity : Entity
+        public IQueryable<TEntity> AsQueryable<TEntity>() where TEntity : Entity
         {
             return _context.Set<TEntity>().AsNoTracking();                
-        }
-
-        public IQueryable<TEntity> AsQueryable<TEntity>(params string[] includes) where TEntity : Entity
-        {
-            var db = _context.Set<TEntity>().AsNoTracking().AsQueryable();
-
-            foreach (var i in includes)
-            {
-                db = db.Include(i);
-            }
-
-            return db;
-        }
+        }       
     }
 }
