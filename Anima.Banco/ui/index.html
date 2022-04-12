@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anima Bank</title>
+    <script src="./node_modules/angular/angular.min.js"></script>
+
+    <script src="./js/app/index.js"></script>
+
+    <script src="./js/app/value/config.value.js"></script>
+    <script src="./js/app/services/http.service.js"></script>
+
+    <script src="./js/app/controllers/customer.controller.js"></script>
+
+</head>
+<body ng-app="app">
+
+
+    <div ng-controller="CustomerController">
+
+        <form>
+            <div>
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" ng-model="name">
+            </div>
+    
+            <div>
+                <label for="email">E-mail:</label>
+                <input type="text" id="email" name="email" ng-model="email">
+            </div>
+
+            <input type="submit" value="Enviar" ng-click="send()">
+        </form>
+        
+    </div>
+
+</body>
+</html>
