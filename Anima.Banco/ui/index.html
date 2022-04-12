@@ -7,12 +7,7 @@
     <title>Anima Bank</title>
     <script src="./node_modules/angular/angular.min.js"></script>
 
-    <script src="./js/app/index.js"></script>
-
-    <script src="./js/app/value/config.value.js"></script>
-    <script src="./js/app/services/http.service.js"></script>
-
-    <script src="./js/app/controllers/customer.controller.js"></script>
+    <script src="./js/dist/all.js"></script>
 
 </head>
 <body ng-app="app">
@@ -32,6 +27,8 @@
             </div>
 
             <input type="submit" value="Enviar" ng-click="send()">
+
+            <input type="button" value="Reload" ng-click="load()">
         </form>
         
     </div>

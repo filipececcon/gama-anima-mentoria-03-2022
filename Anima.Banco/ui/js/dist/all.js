@@ -1,3 +1,4 @@
+const app = angular.module("app", []);
 (() => {
 
     app.controller('CustomerController', ($scope, $http, config) => {
@@ -39,3 +40,10 @@
 
     })
 })();
+(() => {
+	
+	app.value('config', {
+		baseUrl: 'http://localhost:5000/api'
+	})
+	
+})()
