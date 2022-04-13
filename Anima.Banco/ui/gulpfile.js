@@ -10,6 +10,6 @@ gulp.task('build', () => {
     .pipe(gulp.dest('./js/dist'))
 })
 
-// gulp.task('build-watch', () =>{
-//     gulp.watch([src], ['build'])
-// })
+gulp.task('watch', () =>{
+    gulp.watch(src, gulp.series('build'))
+})

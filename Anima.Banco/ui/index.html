@@ -26,11 +26,31 @@
                 <input type="text" id="email" name="email" ng-model="email">
             </div>
 
-            <input type="submit" value="Enviar" ng-click="send()">
-
-            <input type="button" value="Reload" ng-click="load()">
+            <input type="submit" value="Enviar" ng-click="save()" />
         </form>
-        
+
+        <table ng-init="load()">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Data Criação</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="c in list">
+                <tr>
+                    <td>{{c.id}}</td>
+                    <td>{{c.name}}</td>
+                    <td>{{c.email}}</td>
+                    <td>{{c.createdAt}}</td>
+                    <td><button ng-click="remove(c.id)">Remover</button></td>
+                    <td><button ng-click="edit(c.id)">Editar</button></td>
+                </tr>
+            </tbody>
+        </table>
+
     </div>
 
 </body>

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npx gulp build",
-    "build:watch": "npx gulp build-watch"
+    "build:watch": "npx gulp watch"
   },
   "author": "filipececcon@gmail.com",
   "license": "ISC",

@@ -3,47 +3,65 @@ const app = angular.module("app", []);
 
     app.controller('CustomerController', ($scope, $http, config) => {
 
+        const route = config.baseUrl + "/customer"    
         let me = $scope
 
         me.name = ""
         me.email = ""
+        me.list = []
+        
+        //para usar no ng-init o metodo precisa ser sincrono, asssincrono não carrega os dados
+        me.load = () => {
+            $http.get(route)
+            .then(response => { 
+                me.list = response.data.data 
+                me.name = ""
+                me.email = ""
+                me.id = ""
+            })
+            .catch(err => { console.error(err) })            
+        }
 
-        me.route = config.baseUrl + "/customer"
+        me.edit = (id) => {
+            var customer = me.list.find(e => e.id == id)
+            me.name = customer.name
+            me.email = customer.email
+            me.id = id
+        }
 
-        me.send = async () => {
+        me.save = async () => {
             
+            var customer = { name:me.name , email : me.email }
+            var method = "post"
+            var path = route
+
+            if(me.id){
+                method = "put"
+                path += `/${me.id}`
+            }
+
             var customer = { name:me.name , email : me.email }
 
             try {
-                var response = await $http.post(me.route, null, customer)              
-                
+                var response = await $http[method](path, customer)                
+                await me.load()                
             } catch (error) {
                 console.log(error)
             }
-
         }
 
-        me.load = async () =>{
-
+        me.remove = async(id) => {
             try {
-                var response = await $http.get(me.route)
-
-                me.list = response.data
-
-                console.log(me.list)
-                
+                var response = await $http.delete(route + `/${id}`)
+                await me.load()
             } catch (error) {
                 console.log(error)
             }
-
         }
-
     })
 })();
 (() => {
-	
 	app.value('config', {
 		baseUrl: 'http://localhost:5000/api'
 	})
-	
-})()
+})();
